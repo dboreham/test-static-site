@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureGuard AI - Intelligence-Powered Security, Human-First Protection</title>
+    <meta name="description" content="Empower development teams to build secure software faster by combining the analytical power of large language models with actionable security insights.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'guardian-blue': '#1B4D89',
+                        'alert-red': '#D32F2F',
+                        'safe-green': '#388E3C',
+                        'warning-amber': '#F57C00',
+                        'info-teal': '#00897B',
+                        'neutral-gray': '#546E7A',
+                        'light-gray': '#F5F7FA',
+                        'dark-slate': '#263238',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white text-neutral-gray">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <svg class="h-8 w-8 text-guardian-blue" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4zm0 2.2l6 3v5.3c0 4.4-3 8.6-6 9.8-3-1.2-6-5.4-6-9.8V7.2l6-3zM11 9v2H9v2h2v2h2v-2h2v-2h-2V9h-2z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold text-guardian-blue">SecureGuard AI</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#features" class="text-neutral-gray hover:text-guardian-blue transition">Features</a>
+                    <a href="#how-it-works" class="text-neutral-gray hover:text-guardian-blue transition">How It Works</a>
+                    <a href="#pricing" class="text-neutral-gray hover:text-guardian-blue transition">Pricing</a>
+                    <a href="#" class="text-neutral-gray hover:text-guardian-blue transition">Docs</a>
+                    <a href="#" class="bg-guardian-blue text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition font-semibold">Start Free Trial</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-neutral-gray hover:text-guardian-blue">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-t border-gray-200 bg-white">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="#features" class="block px-3 py-2 text-neutral-gray hover:text-guardian-blue hover:bg-light-gray rounded">Features</a>
+                <a href="#how-it-works" class="block px-3 py-2 text-neutral-gray hover:text-guardian-blue hover:bg-light-gray rounded">How It Works</a>
+                <a href="#pricing" class="block px-3 py-2 text-neutral-gray hover:text-guardian-blue hover:bg-light-gray rounded">Pricing</a>
+                <a href="#" class="block px-3 py-2 text-neutral-gray hover:text-guardian-blue hover:bg-light-gray rounded">Docs</a>
+                <a href="#" class="block px-3 py-2 bg-guardian-blue text-white rounded text-center font-semibold">Start Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-white to-light-gray py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-guardian-blue mb-6">
+                    Security Analysis That Speaks Your Language
+                </h1>
+                <p class="text-xl md:text-2xl text-neutral-gray mb-8 max-w-4xl mx-auto">
+                    SecureGuard AI combines advanced language models with security expertise to find vulnerabilities, explain risks, and guide your team to better code—all in your development workflow.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="bg-guardian-blue text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition shadow-lg">Start Free Trial</a>
+                    <a href="#how-it-works" class="bg-white border-2 border-guardian-blue text-guardian-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-light-gray transition">See How It Works</a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="mt-12 text-sm text-neutral-gray">
+                    <p class="mb-4">Trusted by development teams at</p>
+                    <div class="flex flex-wrap justify-center gap-8 items-center opacity-60">
+                        <span class="font-semibold">TechCorp</span>
+                        <span class="font-semibold">SecureBank</span>
+                        <span class="font-semibold">CloudScale</span>
+                        <span class="font-semibold">DevStream</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- For Developers -->
+                <div class="bg-light-gray p-8 rounded-lg" x-data="{ expanded: false }">
+                    <div class="text-guardian-blue mb-4">
+                        <svg class="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-guardian-blue mb-3">For Developers</h3>
+                    <p class="text-neutral-gray text-lg mb-4">Ship secure code faster with AI-powered security analysis that fits your workflow.</p>
+                    <button @click="expanded = !expanded" class="text-guardian-blue font-semibold hover:underline">
+                        <span x-text="expanded ? 'Show less' : 'Learn more'"></span>
+                    </button>
+                    <div x-show="expanded" x-cloak class="mt-4 text-neutral-gray">
+                        <p>Integrate security analysis directly into your IDE, PRs, and CI/CD pipeline. Get instant feedback without context switching.</p>
+                    </div>
+                </div>
+
+                <!-- For Security Teams -->
+                <div class="bg-light-gray p-8 rounded-lg" x-data="{ expanded: false }">
+                    <div class="text-guardian-blue mb-4">
+                        <svg class="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-guardian-blue mb-3">For Security Teams</h3>
+                    <p class="text-neutral-gray text-lg mb-4">Scale your security expertise across every pull request without becoming a bottleneck.</p>
+                    <button @click="expanded = !expanded" class="text-guardian-blue font-semibold hover:underline">
+                        <span x-text="expanded ? 'Show less' : 'Learn more'"></span>
+                    </button>
+                    <div x-show="expanded" x-cloak class="mt-4 text-neutral-gray">
+                        <p>Configure custom security policies and let AI enforce them consistently across all repositories and teams.</p>
+                    </div>
+                </div>
+
+                <!-- For Engineering Leaders -->
+                <div class="bg-light-gray p-8 rounded-lg" x-data="{ expanded: false }">
+                    <div class="text-guardian-blue mb-4">
+                        <svg class="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-guardian-blue mb-3">For Engineering Leaders</h3>
+                    <p class="text-neutral-gray text-lg mb-4">Build a security-first culture with tools that educate while they protect.</p>
+                    <button @click="expanded = !expanded" class="text-guardian-blue font-semibold hover:underline">
+                        <span x-text="expanded ? 'Show less' : 'Learn more'"></span>
+                    </button>
+                    <div x-show="expanded" x-cloak class="mt-4 text-neutral-gray">
+                        <p>Track security metrics, demonstrate compliance, and empower your teams with educational insights on every finding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="features" class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-guardian-blue mb-4">Built for modern development workflows</h2>
+                <p class="text-xl text-neutral-gray max-w-3xl mx-auto">Our LLM-powered platform understands context, not just patterns, catching sophisticated vulnerabilities that traditional tools miss.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Feature 1 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-info-teal rounded-lg flex items-center justify-center text-white font-bold text-xl">1</div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-guardian-blue mb-2">Context-aware analysis</h3>
+                        <p class="text-neutral-gray">Understands code intent and business logic, not just pattern matching. SecureGuard AI reads your code like a senior security engineer would.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-info-teal rounded-lg flex items-center justify-center text-white font-bold text-xl">2</div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-guardian-blue mb-2">Actionable insights</h3>
+                        <p class="text-neutral-gray">Every finding includes clear explanations, severity ratings, and step-by-step remediation guidance. No more cryptic error messages.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-info-teal rounded-lg flex items-center justify-center text-white font-bold text-xl">3</div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-guardian-blue mb-2">Developer experience first</h3>
+                        <p class="text-neutral-gray">Security analysis integrated where developers already work: PRs, IDEs, and CI/CD pipelines. Zero friction, maximum impact.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-info-teal rounded-lg flex items-center justify-center text-white font-bold text-xl">4</div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-guardian-blue mb-2">Continuous improvement</h3>
+                        <p class="text-neutral-gray">The platform learns from your codebase, coding standards, and security policies over time. Gets smarter with every scan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-guardian-blue mb-4">See SecureGuard AI in action</h2>
+                <p class="text-xl text-neutral-gray">Here's how we identify and explain a security vulnerability</p>
+            </div>
+
+            <!-- Vulnerability Card Demo -->
+            <div class="bg-white border-2 border-gray-200 rounded-lg p-6 shadow-lg" x-data="{ showFix: false }">
+                <div class="flex items-start gap-3 mb-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-3 h-3 bg-alert-red rounded-full mt-1"></div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-alert-red text-white text-xs font-bold px-2 py-1 rounded">CRITICAL</span>
+                            <span class="text-sm text-neutral-gray">src/components/UserProfile.tsx:42</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-guardian-blue mb-2">Cross-Site Scripting (XSS) in User Profile</h3>
+                        <p class="text-neutral-gray mb-4">User-provided biography text is rendered without escaping, allowing malicious scripts to execute in other users' browsers.</p>
+
+                        <div class="bg-light-gray p-4 rounded mb-4">
+                            <p class="text-sm font-semibold text-guardian-blue mb-2">Impact:</p>
+                            <p class="text-neutral-gray text-sm">Account takeover, data theft, malicious actions performed on behalf of users</p>
+                        </div>
+
+                        <button @click="showFix = !showFix" class="text-guardian-blue font-semibold hover:underline mb-4">
+                            <span x-text="showFix ? '▼ Hide recommended fix' : '▶ Show recommended fix'"></span>
+                        </button>
+
+                        <div x-show="showFix" x-cloak class="bg-dark-slate text-white p-4 rounded font-mono text-sm mb-4">
+                            <p class="text-safe-green mb-2">// Recommended fix:</p>
+                            <p class="mb-2">// 1. Use React's default JSX escaping</p>
+                            <p class="mb-2">&lt;div&gt;{user.biography}&lt;/div&gt;</p>
+                            <p class="mb-2 text-warning-amber">// 2. Or sanitize with DOMPurify if HTML is needed</p>
+                            <p>import DOMPurify from 'dompurify';</p>
+                            <p>&lt;div dangerouslySetInnerHTML={{</p>
+                            <p>&nbsp;&nbsp;__html: DOMPurify.sanitize(user.biography)</p>
+                            <p>}} /&gt;</p>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button class="bg-guardian-blue text-white px-4 py-2 rounded font-semibold hover:bg-opacity-90 transition">View Code</button>
+                            <button class="border-2 border-guardian-blue text-guardian-blue px-4 py-2 rounded font-semibold hover:bg-light-gray transition">Generate Fix</button>
+                            <button class="text-neutral-gray px-4 py-2 rounded font-semibold hover:bg-light-gray transition">Mark False Positive</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-guardian-blue mb-4">Get started in under 5 minutes</h2>
+                <p class="text-xl text-neutral-gray">Three simple steps to safer code</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-guardian-blue mb-4">1</div>
+                    <h3 class="text-xl font-bold text-guardian-blue mb-3">Connect your repository</h3>
+                    <p class="text-neutral-gray">Authorize SecureGuard AI to access your GitHub, GitLab, or Bitbucket repositories. Your code stays in your infrastructure.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-guardian-blue mb-4">2</div>
+                    <h3 class="text-xl font-bold text-guardian-blue mb-3">Configure your scan</h3>
+                    <p class="text-neutral-gray">Select which branches to scan and set your security policy preferences. Our smart defaults work great for most projects.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-guardian-blue mb-4">3</div>
+                    <h3 class="text-xl font-bold text-guardian-blue mb-3">Review findings</h3>
+                    <p class="text-neutral-gray">SecureGuard AI will analyze your code and surface prioritized findings with clear explanations and fix suggestions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-guardian-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2">10M+</div>
+                    <div class="text-blue-200">Lines of code scanned</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">50K+</div>
+                    <div class="text-blue-200">Vulnerabilities identified</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">95%</div>
+                    <div class="text-blue-200">Accuracy rate</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">2hrs</div>
+                    <div class="text-blue-200">Average time saved per week</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-guardian-blue mb-4">Simple, transparent pricing</h2>
+                <p class="text-xl text-neutral-gray">Choose the plan that fits your team</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="border-2 border-gray-200 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-guardian-blue mb-2">Starter</h3>
+                    <p class="text-neutral-gray mb-4">For individual developers</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-guardian-blue">$29</span>
+                        <span class="text-neutral-gray">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Up to 5 repositories</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Unlimited scans</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">PR integration</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Email support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-guardian-blue text-guardian-blue px-6 py-3 rounded-lg font-semibold hover:bg-light-gray transition">Start Free Trial</button>
+                </div>
+
+                <!-- Team Plan -->
+                <div class="border-2 border-guardian-blue rounded-lg p-8 relative shadow-lg scale-105">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <span class="bg-guardian-blue text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-guardian-blue mb-2">Team</h3>
+                    <p class="text-neutral-gray mb-4">For growing teams</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-guardian-blue">$99</span>
+                        <span class="text-neutral-gray">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Up to 20 repositories</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Unlimited scans</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">PR + IDE integration</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Priority support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Custom security policies</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-guardian-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition">Start Free Trial</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="border-2 border-gray-200 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-guardian-blue mb-2">Enterprise</h3>
+                    <p class="text-neutral-gray mb-4">For large organizations</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-guardian-blue">Custom</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Unlimited repositories</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">All integrations</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Dedicated support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">Self-hosted option</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-safe-green mt-1">✓</span>
+                            <span class="text-neutral-gray">SLA & compliance</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-guardian-blue text-guardian-blue px-6 py-3 rounded-lg font-semibold hover:bg-light-gray transition">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-light-gray">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-guardian-blue mb-4">Frequently asked questions</h2>
+            </div>
+
+            <div class="space-y-4" x-data="{ openFaq: null }">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-lg shadow-sm">
+                    <button @click="openFaq = openFaq === 1 ? null : 1" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-semibold text-guardian-blue">How does SecureGuard AI use large language models?</span>
+                        <span class="text-guardian-blue text-xl" x-text="openFaq === 1 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="openFaq === 1" x-cloak class="px-6 pb-4 text-neutral-gray">
+                        <p>SecureGuard AI uses advanced language models to identify potential security issues by understanding code context, not just pattern matching. The AI analyzes your code similarly to how an experienced security engineer would, identifying vulnerabilities and suggesting fixes. While highly effective, automated analysis should be part of a comprehensive security strategy including code review, penetration testing, and security training.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-lg shadow-sm">
+                    <button @click="openFaq = openFaq === 2 ? null : 2" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-semibold text-guardian-blue">Is my code secure with SecureGuard AI?</span>
+                        <span class="text-guardian-blue text-xl" x-text="openFaq === 2 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="openFaq === 2" x-cloak class="px-6 pb-4 text-neutral-gray">
+                        <p>Yes. Your code is analyzed securely and is never used to train our models or shared with third parties. We support both cloud and self-hosted deployment options for enterprises with strict compliance requirements.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-lg shadow-sm">
+                    <button @click="openFaq = openFaq === 3 ? null : 3" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-semibold text-guardian-blue">What programming languages do you support?</span>
+                        <span class="text-guardian-blue text-xl" x-text="openFaq === 3 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="openFaq === 3" x-cloak class="px-6 pb-4 text-neutral-gray">
+                        <p>We support JavaScript, TypeScript, Python, Java, Go, Ruby, PHP, C#, and more. Our LLM-based approach allows us to analyze code in any language, though accuracy is highest for our officially supported languages.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-lg shadow-sm">
+                    <button @click="openFaq = openFaq === 4 ? null : 4" class="w-full px-6 py-4 text-left flex justify-between items-center">
+                        <span class="font-semibold text-guardian-blue">Can I customize the security policies?</span>
+                        <span class="text-guardian-blue text-xl" x-text="openFaq === 4 ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="openFaq === 4" x-cloak class="px-6 pb-4 text-neutral-gray">
+                        <p>Absolutely. Team and Enterprise plans include custom security policy configuration. You can set severity thresholds, enable/disable specific checks, and add your own security rules that align with your organization's standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-guardian-blue to-info-teal text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to strengthen your security?</h2>
+            <p class="text-xl mb-8 opacity-90">Start your free 14-day trial. No credit card required.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="bg-white text-guardian-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition shadow-lg">Start Free Trial</a>
+                <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">Schedule a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-slate text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Company -->
+                <div>
+                    <h3 class="font-bold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition">About</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Press Kit</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Product -->
+                <div>
+                    <h3 class="font-bold mb-4">Product</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition">Integrations</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition">API Reference</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Security</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h3 class="font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <svg class="h-6 w-6 text-guardian-blue" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4zm0 2.2l6 3v5.3c0 4.4-3 8.6-6 9.8-3-1.2-6-5.4-6-9.8V7.2l6-3z"/>
+                    </svg>
+                    <span class="ml-2 font-bold">SecureGuard AI</span>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    © 2025 SecureGuard AI. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</body>
+</html>
